@@ -30,7 +30,11 @@ public class Biblioteca {
     }
 
     public void registrarEmprestimo(Livro livro, Cliente cliente) {
-        livro.setDisponivel(false);
+        if (!livro.isDisponivel()) {
+            System.out.println("\n❌ Este livro já está emprestado!");
+            return;
+        }
+        livro.setStatus(StatusLivro.INDISPONIVEL);
         Emprestimo emprestimo = new Emprestimo(emprestimos.size() + 1, livro, cliente);
         emprestimos.add(emprestimo);
         System.out.println("\n✅ Empréstimo realizado com sucesso!");
@@ -40,7 +44,8 @@ public class Biblioteca {
 
     public void listarEmprestimos() {
         if (emprestimos.isEmpty()) {
-            System.out.println("Não há livros disponíveis");
+            System.out.println("Não há empréstimos registrados");
+            return;
         }
 
         for (Emprestimo emprestimo : emprestimos) {

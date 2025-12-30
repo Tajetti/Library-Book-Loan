@@ -4,7 +4,7 @@ public class Livro {
     private final int id;
     private final String titulo;
     private final Autor autor;
-    private boolean disponivel;
+    private StatusLivro status;
     private final LocalDate dataCadastro;
     private LocalDate dataAtualizacao;
 
@@ -12,7 +12,7 @@ public class Livro {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-        this.disponivel = true;
+        this.status = StatusLivro.DISPONIVEL;
         this.dataCadastro = LocalDate.now();
         this.dataAtualizacao = LocalDate.now();
     }
@@ -29,13 +29,17 @@ public class Livro {
         return autor;
     }
 
-    public boolean isDisponivel() {
-        return disponivel;
+    public StatusLivro getStatus() {
+        return this.status;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public void setStatus(StatusLivro status) {
+        this.status = status;
         this.dataAtualizacao = LocalDate.now();
+    }
+
+    public boolean isDisponivel() {
+        return this.status == StatusLivro.DISPONIVEL;
     }
 
     public LocalDate getDataAtualizacao() {
@@ -49,6 +53,6 @@ public class Livro {
     @Override
     public String toString() {
         return "[" + id + "] " + titulo + " - " + autor.getNome() +
-                (disponivel ? " (Disponível)" : " (Emprestado)");
+                (status == StatusLivro.DISPONIVEL ? " (Disponível)" : " (Emprestado)");
     }
 }

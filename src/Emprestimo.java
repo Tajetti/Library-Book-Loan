@@ -37,14 +37,14 @@ public class Emprestimo {
 
     public void devolverLivro() {
         this.dataDevolucao = LocalDate.now();
-        livro.setDisponivel(true);
+        livro.setStatus(StatusLivro.DISPONIVEL);
     }
 
     @Override
     public String toString() {
         return "Id do livro: " + livro.getId() + "\n" +
                 "Titulo do livro: " + livro.getTitulo()  + "\n" +
-                "Nome do Autor: " + livro.getAutor() + "\n" +
+                "Nome do Autor: " + livro.getAutor().getNome() + "\n" +
                 "Nome do Cliente: " + cliente.getName() + "\n" +
                 "Email do Cliente: " + cliente.getEmail();
     }
