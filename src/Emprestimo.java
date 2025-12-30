@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 
 public class Emprestimo {
-    private int id;
-    private Livro livro;
-    private Cliente cliente;
-    private LocalDate dataEmprestimo;
+    private final int id;
+    private final Livro livro;
+    private final Cliente cliente;
+    private final LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
 
     public Emprestimo(int id, Livro livro, Cliente cliente) {
@@ -45,6 +45,7 @@ public class Emprestimo {
         return "Id do livro: " + livro.getId() + "\n" +
                 "Titulo do livro: " + livro.getTitulo()  + "\n" +
                 "Nome do Autor: " + livro.getAutor() + "\n" +
-                "Nome do Cliente: " + cliente.getName() + "\n";
+                "Nome do Cliente: " + cliente.getName() + "\n" +
+                "Email do Cliente: " + cliente.getEmail();
     }
 }
