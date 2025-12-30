@@ -29,12 +29,22 @@ public class Biblioteca {
         return livros.stream().filter(l -> l.getId() == id).findFirst();
     }
 
-    public void registrarEmprestimo(Livro livro, String nomeCliente) {
+    public void registrarEmprestimo(Livro livro, Cliente cliente) {
         livro.setDisponivel(false);
-        Emprestimo emprestimo = new Emprestimo(emprestimos.size() + 1, livro, nomeCliente);
+        Emprestimo emprestimo = new Emprestimo(emprestimos.size() + 1, livro, cliente);
         emprestimos.add(emprestimo);
         System.out.println("\n✅ Empréstimo realizado com sucesso!");
         System.out.println("Livro: " + livro.getTitulo());
-        System.out.println("Cliente: " + nomeCliente);
+        System.out.println("Cliente: " + cliente.getName());
+    }
+
+    public void listarEmprestimos() {
+        if (emprestimos.isEmpty()) {
+            System.out.println("Não há livros disponíveis");
+        }
+
+        for (Emprestimo emprestimo : emprestimos) {
+            System.out.println(emprestimo);
+        }
     }
 }

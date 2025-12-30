@@ -3,14 +3,14 @@ import java.time.LocalDate;
 public class Emprestimo {
     private int id;
     private Livro livro;
-    private String nomeCliente;
+    private Cliente cliente;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
 
-    public Emprestimo(int id, Livro livro, String nomeCliente) {
+    public Emprestimo(int id, Livro livro, Cliente cliente) {
         this.id = id;
         this.livro = livro;
-        this.nomeCliente = nomeCliente;
+        this.cliente = cliente;
         this.dataEmprestimo = LocalDate.now();
         this.dataDevolucao = null;
     }
@@ -23,8 +23,8 @@ public class Emprestimo {
         return livro;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public LocalDate getDataEmprestimo() {
@@ -42,7 +42,9 @@ public class Emprestimo {
 
     @Override
     public String toString() {
-        return "Empréstimo ID " + id + ": " + livro.getTitulo() +
-                " para " + nomeCliente + " em " + dataEmprestimo;
+        return "Id do livro: " + livro.getId() + "\n" +
+                "Titulo do livro: " + livro.getTitulo()  + "\n" +
+                "Nome do Autor: " + livro.getAutor() + "\n" +
+                "Nome do Cliente: " + cliente.getName() + "\n";
     }
 }
