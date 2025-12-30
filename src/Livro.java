@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 
 public class Livro {
-    private int id;
-    private String titulo;
-    private Autor autor;
+    private final int id;
+    private final String titulo;
+    private final Autor autor;
     private boolean disponivel;
-    private LocalDate dataCadastro;
+    private final LocalDate dataCadastro;
     private LocalDate dataAtualizacao;
 
     public Livro(int id, String titulo, Autor autor) {
@@ -36,6 +36,14 @@ public class Livro {
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
         this.dataAtualizacao = LocalDate.now();
+    }
+
+    public LocalDate getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
     }
 
     @Override
